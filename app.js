@@ -55,6 +55,7 @@
 
 // const sayName1 = (name, callback) => { this.name = name; callback() }
 // const getName1 = (name) => {
+//     this.name=name;
 //     if (this.name == "komo") { console.log("success") }
 //     else { console.log("fail") }
 // }
@@ -80,6 +81,15 @@
 //   document.getElementById('root')
 // );
 // require('./js/index.jsx')
+
 import im from './js/index.jsx';
+require("babel-polyfill");//for using es6 promise
+var getName1=require('./js/promise.js')
+// const sayName2 = (name, callback) => { name = name; callback() }
+
+// getName1("komo",sayName2);
+// console.log(getName1);
+// getName1("komolei", sayName1);
+
 
 

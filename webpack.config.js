@@ -1,5 +1,6 @@
 const path = require('path');
-let app = './app.js'
+// let app = './app.js'
+let app={app:['babel-polyfill','./app.js']}
 module.exports = {
     entry: app,
     output: {
