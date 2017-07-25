@@ -1,11 +1,12 @@
 const path = require('path');
+// const 
 // let app = './app.js'
-let app={app:['babel-polyfill','./app.js']}
+let app = { app: ['babel-polyfill', './app.js'] }
 module.exports = {
     entry: app,
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '_[name].js',
+        filename: '[name].js',
     },
     module: {
         rules: [
@@ -16,6 +17,14 @@ module.exports = {
                     loader: "babel-loader",
                 }
             },
+            {
+                test: /\.scss$/,
+                use: [
+                    "style-loader", "css-loader", {
+                        loader: "sass-loader"
+                    }
+                ]
+            }
             // {
             //     test: /\.css$/,
             //     exclude: /node_modules/,

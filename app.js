@@ -83,10 +83,12 @@
 // require('./js/index.jsx')
 
 import im from './js/index.jsx';
+import {komolei} from './js/try.jsx';
 require("babel-polyfill");//for using es6 promise
 var getName1=require('./js/promise.js')
 // const sayName2 = (name, callback) => { name = name; callback() }
 
+require("./sass/index.scss")
 // getName1("komo",sayName2);
 // console.log(getName1);
 // getName1("komolei", sayName1);
