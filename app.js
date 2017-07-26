@@ -84,6 +84,8 @@
 
 import im from './js/index.jsx';
 import {komolei} from './js/try.jsx';
+import tryangin from './js/tryangin.jsx';
+tryangin();
 require("babel-polyfill");//for using es6 promise
 var getName1=require('./js/promise.js')
 // const sayName2 = (name, callback) => { name = name; callback() }

@@ -21,7 +21,7 @@ const getName1 = (name) => {
 
 // module.exports = getname;
 
-// module.exports=getName1("komo",sayName1);
+// module.exports=getNam`e1("komo",sayName1);
 
 // const promise=new Promise(function(resolve,reject){
 

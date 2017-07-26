@@ -7,6 +7,13 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
+        publicPath: "/"
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        hot: true,
+        contentBase: path.resolve(__dirname, "./"),
+        publicPath: './'
     },
     module: {
         rules: [
@@ -37,6 +44,8 @@ module.exports = {
             // }
 
         ]
-    }
-
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 }
