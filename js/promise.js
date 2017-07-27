@@ -1,4 +1,4 @@
-require("babel-polyfill");//for using es6 promise
+// require("babel-polyfill");//for using es6 promise
 
 
 // const sayName1 = (name, callback) => { this.name = name; this.callback() }
@@ -39,7 +39,9 @@ var preloadImage = function (path) {
     image.onload  = resolve;
     image.onerror = reject;
     image.src = path;
+    console.log("xiao");
   });
 };
 let $DocumentMeta = document.getElementsByTagName('meta');
 let _meta = Array.from($DocumentMeta);
+export default preloadImage;
