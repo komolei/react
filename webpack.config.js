@@ -14,7 +14,7 @@ module.exports = {
     devServer: {
         hot: true,
         contentBase: path.resolve(__dirname, "./"),
-        publicPath: './dist'
+        publicPath: './'
     },
     module: {
         rules: [

@@ -4,9 +4,9 @@ import { AppContainer } from 'react-hot-loader'
 
 let tryangin = ReactDom.render(
     <div>what a good day 123ddd <ul
-    ><li>1</li>
+    ><li>1komo</li>
         <li>2ccadfxxzdccc</li>
-        <li>cccxxccc3</li></ul></div>,
+        <li>komoleixxccc3</li></ul></div>,
     document.getElementsByClassName('tryangin')[0]
 )
 // export default function () {
@@ -18,7 +18,7 @@ if (module.hot) {
 // tryangin.log();
 
     
-    console.log("xixixi");
+    console.log("xixiccxi");
   })
 }
 // export default {
