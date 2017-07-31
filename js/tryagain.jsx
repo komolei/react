@@ -7,19 +7,20 @@ let tryangin = ReactDom.render(
     ><li>1komo</li>
         <li>2ccadfxxzdccc</li>
         <li>komoleixxccc3</li></ul></div>,
-    document.getElementsByClassName('tryangin')[0]
+    document.getElementsByClassName('tryangin')[0],
+    console.log("gg")
 )
 // export default function () {
 //     console.log("gg");
 // }
 if (module.hot) {
-  module.hot.accept('./tryangin.jsx', function() {
-    // 使用更新过的 library 模块执行某些操作...
-// tryangin.log();
+    module.hot.accept('./tryagain.jsx', function () {
+        // 使用更新过的 library 模块执行某些操作...
+        // tryangin.log();
 
-    
-    console.log("xixiccxi");
-  })
+
+        console.log("xixiccxi");
+    })
 }
 // export default {
 //     log(){

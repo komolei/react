@@ -82,17 +82,31 @@
 // );
 // require('./js/index.jsx')
 
-import im from './js/index.jsx';
-import {komolei} from './js/try.jsx';
+// import im from './js/index.jsx';
+// import {komolei} from './js/try.jsx';
 // import tryangin from './js/tryangin.jsx';
 // import po from './js/promise.js';
 // console.log('dajgog');
-require("./js/tryangin.jsx");
+// require("./js/tryangin.jsx");
+// import tryagain;
+require("tryagain");
 require("babel-polyfill");//for using es6 promise
-var getName1=require('./js/promise.js')
+// var getName1=require('./js/promise.js')
 // const sayName2 = (name, callback) => { name = name; callback() }
-
+require("im");
+// debugger
+console.log("cccc");
+require("./js/jsx.jsx")
+require("./js/jsinJsx.jsx")
+require("./js/component.jsx")
+require("./js/ssk.jsx");
+require("./js/props.jsx");
 require("./sass/index.scss")
+require("./js/sskk.jsx");
+// require("./js/jiaocheng.jsx")    
+require("./js/todo.jsx");
+require("./js/todo1.jsx");
+
 // getName1("komo",sayName2);
 // console.log(getName1);
 // getName1("komolei", sayName1);

@@ -1,8 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const 
 // let app = './app.js'
-let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
+// let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
+let app = { app: ['babel-polyfill', './app.js'] }
 module.exports = {
     entry: app,
     output: {
@@ -10,11 +13,17 @@ module.exports = {
         filename: '[name].js',
         publicPath: "./dist/"
     },
-    devtool: 'inline-source-map',
-    devServer: {
-        hot: true,
-        contentBase: path.resolve(__dirname, "./"),
-        publicPath: './'
+    // devtool: 'source-map',
+    // devServer: {
+    //     hot: true,
+    //     contentBase: path.resolve(__dirname, "./"),
+    //     publicPath: './'
+    // },
+    resolve:{
+        alias:{
+            im:path.resolve(__dirname,"./js/index.jsx"),
+            tryagain:path.resolve(__dirname,"./js/tryagain.jsx"),
+        }
     },
     module: {
         rules: [
@@ -33,11 +42,14 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [
-                    "style-loader", "css-loader", {
-                        loader: "sass-loader"
-                    }
-                ]
+                use: extractTextWebpackPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader", {
+                            loader: "sass-loader"
+                        }
+                    ]
+                })
             }
             // {
             //     test: /\.css$/,
@@ -54,8 +66,15 @@ module.exports = {
     },
     plugins: [
         // new webpack.HotModuleReplacementPlugin()
-        new webpack.HotModuleReplacementPlugin({
-            // Options...
-        })
+        // new webpack.HotModuleReplacementPlugin({
+        //     // Options...
+        // }),
+        new extractTextWebpackPlugin("[name].css"),
+        // new UgLifyJsPlugin({
+        //     compress: true,
+        //     mangle: true,
+        //     beautify: true,
+        //     // comments: true,
+        // })
     ]
 }
