@@ -69,12 +69,38 @@ class TodoInput extends Component {
     //     // this.props.onHandleNewTodo(e.target.value);
 
     // }
+    // click = (e) => {
+    //     e.preventDefault();
+    //     alert("fuck click")
+    //     if (e.keyCode == 13) {
+    //         console.log("enter")
+    //     }
+
+    // }
+    keyUp = (e) => {
+        console.log(1111);
+        if (e.key == 'Enter') {
+            console.log("key =13s")
+            let value = e.target.value;
+            console.log(value, "value");
+            // this.setState({
+            //     newTodo: value,
+            // })
+            // this.props.newTodo=value;
+
+        }
+    }
     render() {
-        const newTodo = this.props.newTodo;
+        const onNewTodo = this.props.onNewTodo;
+        // console.log(onNewTodo,"newTodo");
         return (
             <div>
-                <input type="text" value={newTodo} onChange={this.props.onHandleNewTodo} />
-                <span>{newTodo}</span>
+                {/* <input type="text" value={onNewTodo} onChange={this.props.onHandleNewTodo} />   */}
+                {/* <input type="text" value={onNewTodo} onKeyPress={this.props.onHandleNewTodo} /> */}
+                <input type="text" value={onNewTodo} onKeyPress={this.keyUp} onChange={this.props.onHandleNewTodo} />
+
+                <span>{onNewTodo}</span>
+                {/* <input type="button" onClick={this.click} /> */}
             </div>
         )
     }
@@ -85,20 +111,32 @@ class TodoList extends Component {
     }
     render() {
         // const value = this.state.value;
-        const  newTodoList= this.props.newTodoList;
+        let onNewTodoList = this.props.onNewTodoList;
+        let onNewTodo = this.props.onNewTodo;
+        // newTodoList = newTodoList.unshift(JSON.parse(newTodo));
+        let length = JSON.stringify(onNewTodoList).length;
+        // let stringNewTodo = ',{"id":"' + onNewTodo + '"}';
+        // let ObnewTodoInput=onNewTodo.id
+        // console.log(stringNewTodo, "string");
+        // console.log((JSON.stringify(onNewTodoList).substr(1, length - 2)) + stringNewTodo);
+        // onNewTodoList = JSON.parse('[' + (JSON.stringify(onNewTodoList).substr(1, length - 2) + stringNewTodo) + ']');
+        onNewTodoList = onNewTodoList.push({
+            id: onNewTodo
+        })
+        // console.log(onNewTodo);
+        //上面方法有错误，不能使用字符串的形式。不然都叠加到一起了。
+        console.log(onNewTodoList, "newTodoList");
         return (
             <ul>
-                {newTodoList.map((item) => {
+                {/* {onNewTodoList.map((item) => {
                     return <li key={item.id}>
-                        <p >{item.title} <span>{item.status}</span> <span>{item.delete}</span></p>
+                        <p ><span>{item.id}</span> <span>{item.title}</span> <span>{item.status}</span> <span>{item.delete}</span></p>
                     </li>
-                })}
+                })} */}
             </ul>);
     }
 }
-// let addNewTodo = (newTodo,value) => {
-//     return value.unshift(newTodo)
-// }
+
 class App extends Component {
     // let h=<h1>我的代办</h1>
     constructor(props) {
@@ -106,30 +144,37 @@ class App extends Component {
         this.state = {
             newTodo: '',
             TodoList: [
-                { id: 0, title: "eat", status: "completed", delete: "false" },
-                { id: 1, title: "watch", status: "completed", delete: "false" },
-                { id: 2, title: "play", status: "completed", delete: "true" },
+                { "id": "0", "title": "eat", "status": "completed", "delete": "false" },
+                // { id: 1, title: "watch", status: "completed", delete: "false" },
+                // { id: 2, title: "play", status: "completed", delete: "true" },
             ]
         }
     };
-
+    // keyUp = (e, state) => {
+    //     (e.keyCode == 13) ? {
+    //         newTodo: e.target.value,
+    //     } : { newTodo: "this.state.newTodo" }
+    // }
     handleNewTodo = (e) => {
         this.setState({
-            // newTodo: { id: 22, title: "play", status: "completed", delete: "true" },
             newTodo: e.target.value,
-            // newTodo: addNewTodo,
-            // value: newTodoList
         })
+        // if (e.key === 'Enter') {
+        //     this.setState({
+        //         newTodo: e.target.value,
+        //     })
+        // }
+
     }
+
     render() {
-        const value = this.state.value;
-        const newTodo = this.state.newtodo;
-        // addNewTodo(newTodo,value);
+        // const value = this.state.value;
+        // const newTodo = this.state.newtodo;
         return <div><h1>我的待办事项</h1>
-            <TodoInput onHandleNewTodo={this.handleNewTodo} newTodo={this.state.newTodo} />
+            <TodoInput onHandleNewTodo={this.handleNewTodo} onNewTodo={this.state.newTodo} />
             {/* 上面这句话会抽离出{onHandleNewTodo:'',newTodo:''}作为props对象。 */}
             {/* <span>{this.state.newTodo}</span> */}
-              <TodoList newTodoList={this.state.TodoList} />  
+            <TodoList onNewTodoList={this.state.TodoList} onNewTodo={this.state.newTodo} />
         </div>
         // console.log(props);
     }
@@ -143,100 +188,3 @@ render(<App />, app)
 // componentDidUpdate
 
 
-// const scaleNames = {
-//   c: 'Celsius',
-//   f: 'Fahrenheit'
-// };
-
-// function toCelsius(fahrenheit) {
-//   return (fahrenheit - 32) * 5 / 9;
-// }
-
-// function toFahrenheit(celsius) {
-//   return (celsius * 9 / 5) + 32;
-// }
-
-// function tryConvert(temperature, kconvert) {
-//   const input = parseFloat(temperature);
-//   if (Number.isNaN(input)) {
-//     return '';
-//   }
-//   const output = convert(input);
-//   const rounded = Math.round(output * 1000) / 1000;
-//   return rounded.toString();
-// }
-
-// function BoilingVerdict(props) {
-//   if (props.celsius >= 100) {
-//     return <p>The water would boil.</p>;
-//   }
-//   return <p>The water would not boil.</p>;
-// }
-
-// class TemperatureInput extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
-
-//   handleChange(e) {
-//     this.props.onTemperatureChange(e.target.value);
-//   }
-
-//   render() {
-//     const temperature = this.props.temperature;
-//     const scale = this.props.scale;
-//     return (
-//       <fieldset>
-//         <legend>Enter temperature in {scaleNames[scale]}:</legend>
-//         <input value={temperature}
-//                onChange={this.handleChange} />
-//       </fieldset>
-//     );
-//   }
-// }
-
-// class Calculator extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
-//     this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
-//     this.state = {temperature: '', scale: 'c'};
-//   }
-
-//   handleCelsiusChange(temperature) {
-//     this.setState({scale: 'c', temperature});
-//   }
-
-//   handleFahrenheitChange(temperature) {
-//     this.setState({scale: 'f', temperature});
-//   }
-
-//   render() {
-//     const scale = this.state.scale;
-//     const temperature = this.state.temperature;
-//     const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
-//     const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
-
-//     return (
-//       <div>
-//         <TemperatureInput
-//           scale="c"
-//           temperature={celsius}
-//           onTemperatureChange={this.handleCelsiusChange} />
-
-//         <TemperatureInput
-//           scale="f"
-//           temperature={fahrenheit}
-//           onTemperatureChange={this.handleFahrenheitChange} />
-//         <BoilingVerdict
-//           celsius={parseFloat(celsius)} />
-//       </div>
-//     );
-//   }
-// }
-
-// ReactDOM.render(
-//   <Calculator />,
-//   document.getElementById('root')
-// );

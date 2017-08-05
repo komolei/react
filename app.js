@@ -103,11 +103,11 @@ require("babel-polyfill");//for using es6 promise
 // require("./js/props.jsx");
 require("./sass/index.scss")
 // // require("./js/jiaocheng.jsx")    
-require("./js/todo.jsx");
+// require("./js/todo.jsx");
 // require("./js/time.jsx");
 // require('./js/index.jsx');
-require("./js/todo1.jsx");
-
+// require("./js/todo1.jsx");
+require('./js/newTodo.jsx');
 // require("./js/sskk.jsx");
 // require('./js/temperature.jsx');
 
