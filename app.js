@@ -107,7 +107,10 @@ require("./sass/index.scss")
 // require("./js/time.jsx");
 // require('./js/index.jsx');
 // require("./js/todo1.jsx");
-require('./js/newTodo.jsx');
+// require('./js/newTodo.jsx');
+
+require('./js/cloudTodo.jsx');
+
 // require("./js/sskk.jsx");
 // require('./js/temperature.jsx');
 
