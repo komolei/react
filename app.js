@@ -85,7 +85,7 @@
 // import im from './js/index.jsx';
 // import {komolei} from './js/try.jsx';
 // import tryangin from './js/tryangin.jsx';
-import { p } from './js/promise.js';
+// import { p } from './js/promise.js';
 // console.log(p, "ps");
 // a.d();
 
@@ -113,6 +113,8 @@ require("./sass/index.scss")
 // require('./js/newTodo.jsx');
 
 // require('./js/cloudTodo.jsx');
+// require('./js/userDialog.jsx');
+require('./js/dialog.jsx');
 
 // require("./js/sskk.jsx");
 // require('./js/temperature.jsx');
@@ -121,5 +123,9 @@ require("./sass/index.scss")
 // getName1("komo",sayName2);
 // console.log(getName1);
 // getName1("komolei", sayName1);
+
+
+//react-router
+// import BasicExample from './js/reactRouter.jsx'
 
 

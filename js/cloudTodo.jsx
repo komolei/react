@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import * as leanstorage from './leancloud.js'
+// import * as leanstorage from './leancloud.js'
+// import BasicExample from './reactRouter.jsx'
 
 // console.log(leanstorage,"leanCloud");
 
@@ -258,7 +259,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>代办事项</h1>
+                <h1>代dd办事项</h1>
                 <TodoInput todoInput={this.state.todoInput} onchange={this.change} onkey={this.key} />
                 <TodoList todoList={this.state.todoList} onCompleted={this.completed} todoInput={this.state.todoInput} onDelete={this.delete} />
             </div>
@@ -268,5 +269,15 @@ class App extends Component {
 window.onload = () => {
     let todo = JSON.parse(localStorage.getItem('todo'));
     // console.log(todo, "todo");
-    render(<App value={todo} />, newTodo);
+    render(
+        <App value={todo} />, newTodo);
 }
+
+// export default a=1;
+// exports=App;//error 导出为object
+// export default {App};//error 导出为object
+// export default <App /> ;//error 导出为object
+// exports=App;
+//下面的正确right
+// module.exports = App; //module export 模块的导出 ，试过使用export default并不可以。gg。
+//看了报错，是没有模块导出，很奇怪，为什么export 不能模块导出。

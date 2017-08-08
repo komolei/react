@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import AV from "leancloud-storage"
+const appId = 'I2nC3Aehn27s6djgSaO3FlA1-gzGzoHsz';
+const appKey = 'DBgHHwHFs0j7E26IErHT1TUc';
+AV.init({ appId, appKey });
 
+const user = new AV.User();
 
 // import * as leanCloud from './leancloud.js'
 // import "font-awesome-compass";
@@ -9,14 +13,16 @@ import AV from "leancloud-storage"
 class Login extends Component {
     change = (e) => {
         let val = e.target.value;
-        if (e.keyUp === 'Enter') {
-            this.props.onKey(val);
-        }
+        this.props.onKeyName(val);
     }
     sure = (e) => {
         let val = e.target.value;
-        if (val === this.props.onSurePassword) {
-            alert("login success")
+        if (e.key === 'Enter') {
+            // alert("keypress success")
+            this.props.onKeyLogin(val);
+        }
+        else {
+            console.log("gg");
         }
     }
     render() {
@@ -25,7 +31,7 @@ class Login extends Component {
                 <label htmlFor="username">Name</label>
                 <input type="username" value={this.props.onName} onChange={this.change} />
                 <label htmlFor="password">Password</label>
-                <input type="password" defaultValue={this.props.onPassword} onKeyPress={this.sure} />
+                <input type="password" value={this.props.onPassword} onKeyPress={this.sure} />
             </div>
         )
     }
@@ -104,6 +110,44 @@ class Dialog extends Component {
         this.setState({
             surepassword: val,
         })
+        user.setUsername(this.state.name)
+        user.setPassword(val);
+        // user.setEmail('ddtom@leancloud.cn');
+        user.signUp().then((loginedUser) => {
+            console.log(loginedUser);
+            this.setState({
+                isShow: false,
+            })
+        }, (error) => {
+            console.log(error);
+        });
+        console.log("sfdjaf");
+    }
+    keyLogin = (val) => {
+        const username = this.state.name;
+        console.log("username", username);
+        const password = val;
+        console.log(val, "val");
+        // AV.User.logIn(username, password).then(function (loginedUser) {
+        //     console.log(loginedUser);
+        // }, function (error) {
+        //     console.log(error, "fail");
+        //     // alert(error);
+        //     this.setState({
+        //         isShow: true,
+        //     })
+        //     console.log(this.state.isShow, "show");
+        // });
+        AV.User.logIn(username, password).then((loginedUser) => {
+            console.log(loginedUser);
+        }, (error) => {
+            console.log("error", error);
+            this.setState({
+                isShow: true,
+            })
+            console.log(this.state.isShow, "show");
+
+        })
     }
     changefalse = () => {
         this.setState({
@@ -124,7 +168,7 @@ class Dialog extends Component {
                 {
 
                     isShow ? (<SignUp onName={this.state.name} onKeyName={this.keyName} onPassword={this.state.password} onSurePassword={this.state.surepassword} onKeyPassword={this.keyPassword} onKeySurePassword={this.keySurePassword} />)
-                        : (<Login onName={this.state.name} onPassword={this.state.password} onSurePassword={this.state.surepassword} />)
+                        : (<Login onName={this.state.name} onKeyName={this.keyName} onSurePassword={this.state.surepassword} onKeyLogin={this.keyLogin} />)
                 }
                 {/* <Login onName={this.state.name} onPassword={this.state.password} onKeyPassword={this.keyPassword} />  */}
                 {/*  */}

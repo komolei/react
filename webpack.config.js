@@ -4,8 +4,8 @@ const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const 
 // let app = './app.js'
-// let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
-let app = { app: ['babel-polyfill', './app.js'] }
+let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
+// let app = { app: ['babel-polyfill', './app.js'] }
 module.exports = {
     entry: app,
     output: {
@@ -13,12 +13,12 @@ module.exports = {
         filename: '[name].js',
         publicPath: "./dist/"
     },
-    // devtool: 'source-map',
-    // devServer: {
-    //     hot: true,
-    //     contentBase: path.resolve(__dirname, "./"),
-    //     publicPath: './'
-    // },
+    devtool: 'source-map',
+    devServer: {
+        hot: true,
+        contentBase: path.resolve(__dirname, "./"),
+        publicPath: './'
+    },
     resolve:{
         alias:{
             im:path.resolve(__dirname,"./js/index.jsx"),
@@ -50,22 +50,22 @@ module.exports = {
                         }
                     ]
                 })
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }
             }
-            // {
-            //     test: /\.css$/,
-            //     exclude: /node_modules/,
-            //     use: {
-            //         loader: 'css-loader',
-            //         options: {
-            //             sourceMap: true
-            //         }
-            //     }
-            // }
 
         ]
     },
     plugins: [
-        // new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
         // new webpack.HotModuleReplacementPlugin({
         //     // Options...
         // }),
