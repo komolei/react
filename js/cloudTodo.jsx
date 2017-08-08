@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import * as leanCloud from './leancloud.js'
+import * as leanstorage from './leancloud.js'
+
+// console.log(leanstorage,"leanCloud");
+
+//  // 声明一个 Todo 类型
+//   var Todo = AV.Object.extend('Todo');
+//   // 新建一个 Todo 对象
+//   var todo = new Todo();
+//   todo.set('title', '工程师周会');
+//   todo.set('content', '每周工程师会议，周一下午2点');
+//   todo.save().then(function (todo) {
+//     // 成功保存之后，执行其他逻辑.
+//     console.log('New object created with objectId: ' + todo.id);
+//   }, function (error) {
+//     // 异常处理
+//     console.error('Failed to create new object, with error message: ' + error.message);
+//   });
 
 const newTodo = document.getElementById('newTodo');
 class TodoInput extends Component {
@@ -74,7 +90,7 @@ class TodoList extends Component {
             //     delete items[item.id]
             // }
             return (
-                <li key={index} ref="li" >
+                <li key={index} ref="li" className="li">
                     {/* <input type="checkbox" checked={item.status === 'completed'} onChange={this.changeCompleted} key={item.id} ref="input" /> */}
                     {/* <input type="checkbox" checked={item.status === 'completed'} onChange={()=>{item.status === 'completed' ? 'completed' : 'uncompleted';console.log(item.status);}} /> */}
                     <input type="checkbox" checked={item.status === 'completed'} onChange={(e) => {

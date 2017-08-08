@@ -85,7 +85,10 @@
 // import im from './js/index.jsx';
 // import {komolei} from './js/try.jsx';
 // import tryangin from './js/tryangin.jsx';
-// import po from './js/promise.js';
+import { p } from './js/promise.js';
+// console.log(p, "ps");
+// a.d();
+
 // console.log('dajgog');
 // require("./js/tryangin.jsx");
 // import tryagain;
@@ -109,7 +112,7 @@ require("./sass/index.scss")
 // require("./js/todo1.jsx");
 // require('./js/newTodo.jsx');
 
-require('./js/cloudTodo.jsx');
+// require('./js/cloudTodo.jsx');
 
 // require("./js/sskk.jsx");
 // require('./js/temperature.jsx');
@@ -118,6 +121,5 @@ require('./js/cloudTodo.jsx');
 // getName1("komo",sayName2);
 // console.log(getName1);
 // getName1("komolei", sayName1);
-
 
 
