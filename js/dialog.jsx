@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import { createStore } from 'redux'
 import AV from "leancloud-storage"
 const appId = 'I2nC3Aehn27s6djgSaO3FlA1-gzGzoHsz';
 const appKey = 'DBgHHwHFs0j7E26IErHT1TUc';
@@ -10,6 +11,45 @@ const user = new AV.User();
 // import * as leanCloud from './leancloud.js'
 // import "font-awesome-compass";
 // let Fa=require('react-fontawsesome') 
+
+//redux
+// const count=(state,action)=>{
+
+// }
+// let redux = require('redux');
+// console.log("redux", redux);
+let reducer = (preState, action) => {
+
+    return Object.assign(preState, action);
+}
+let store = createStore(reducer, { a: 1 });
+
+console.log('====================================');
+console.log(store,"store");
+console.log('====================================');
+
+// export const count = (state = 1, action) => {
+//     switch (action.type) {
+//         case 'in':
+//             return state + 1;
+//         case 'de':
+//             return state - 1;
+//         default:
+//             return state;
+//     }
+// };
+// let store = createStore(count);
+// // store.subscrib((state)=>{
+// //     console.log(state);
+// // })
+// store.subscribe(() => {
+//     console.log(store.getState());
+// })
+// store.dispatch({ type: 'in' })
+// store.dispatch({ type: 'de' })
+
+
+//redux
 class Login extends Component {
     change = (e) => {
         let val = e.target.value;
@@ -179,3 +219,81 @@ class Dialog extends Component {
 
 let diaLog = document.getElementById('diaLog');
 render(<Dialog isLog={false} />, diaLog);
+
+
+
+
+
+
+
+
+
+
+
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
+
+// React component
+class Counter extends Component {
+  render() {
+    const { value, onIncreaseClick } = this.props
+    return (
+      <div>
+        <span>{value}</span>
+        <button onClick={onIncreaseClick}>Increase</button>
+      </div>
+    )
+  }
+}
+
+Counter.propTypes = {
+  value: PropTypes.number.isRequired,
+  onIncreaseClick: PropTypes.func.isRequired
+}
+
+// Action
+const increaseAction = { type: 'increase' }
+
+// Reducer
+function counter(state = { count: 0 }, action) {
+  const count = state.count
+  switch (action.type) {
+    case 'increase':
+      return { count: count + 1 }
+    default:
+      return state
+  }
+}
+
+// Store
+const store = createStore(counter)
+
+// Map Redux state to component props
+function mapStateToProps(state) {
+  return {
+    value: state.count
+  }
+}
+
+// Map Redux actions to component props
+function mapDispatchToProps(dispatch) {
+  return {
+    onIncreaseClick: () => dispatch(increaseAction)
+  }
+}
+
+// Connected Component
+const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)

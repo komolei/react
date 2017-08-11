@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-// import * as leanstorage from './leancloud.js'
+// import PropTypes from 'prop-types' 没有感觉到用处。等下次要用到再说吧
+import * as leanstorage from './leancloud.js'
 // import BasicExample from './reactRouter.jsx'
 
 // console.log(leanstorage,"leanCloud");
@@ -40,6 +41,9 @@ class TodoInput extends Component {
         )
     }
 }
+// TodoInput.PropTypes = {
+//     value: PropTypes.string.isRequired,
+// }
 class TodoList extends Component {
 
     changeCompleted = (e) => {

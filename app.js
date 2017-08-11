@@ -114,8 +114,12 @@ require("./sass/index.scss")
 
 // require('./js/cloudTodo.jsx');
 // require('./js/userDialog.jsx');
-require('./js/dialog.jsx');
+// require('./js/dialog.jsx');
+//redux
 
+// require('./js/reduxDialog.jsx');
+// require('./js/redux2.jsx');//这个压根不需要状态管理。自己感觉。但是等等还是试试看怎么去弄
+//redux
 // require("./js/sskk.jsx");
 // require('./js/temperature.jsx');
 
@@ -127,5 +131,9 @@ require('./js/dialog.jsx');
 
 //react-router
 // import BasicExample from './js/reactRouter.jsx'
+
+//使用全新的文件管理性质
+let a=require('./src/index.js');
+console.log("aaa:",a);
 
 
