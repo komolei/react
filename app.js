@@ -92,6 +92,7 @@
 // console.log('dajgog');
 // require("./js/tryangin.jsx");
 // import tryagain;
+
 require("babel-polyfill");//for using es6 promise
 
 // require("tryagain");

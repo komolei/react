@@ -5,7 +5,10 @@ const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const 
 // let app = './app.js'
 // let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
-let app = { app: ['babel-polyfill', './app.js'] }
+// let app = { app: ['babel-polyfill', './app.js'] }
+// use for src's index.js
+let app = { app: ['babel-polyfill', './src/index.js'] }
+
 module.exports = {
     entry: app,
     output: {

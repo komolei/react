@@ -9,7 +9,7 @@ import LogIn from './containers/login.js'
 // );
 import login from './reducers/login.js'
 
-console.log(login, "login");
+// console.log(login, "reducer,login");
 
 
 // let store = store.createStore(login);多写了store,香蕉皮。。
@@ -23,4 +23,5 @@ let cc = document.getElementById('cc');
 
 
 // export default app;
+
 render(app, cc);
