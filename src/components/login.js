@@ -1,49 +1,42 @@
 import React from 'react';
-import { connect } from 'redux';
-import { addPeople } from '../actions'
-// console.log("log addPeople", addPeople);
+// import { connect } from 'redux';
+import { surePeople } from '../actions'
+// console.log("log surePeople", surePeople);
 // import {LogIn} from '../containers/login.js'
 // console.log("LogIn:",LogIn);
+//icon 
+import {FaUser,FaKey,FaHandPaperO} from 'react-icons/fa'
+// console.log("fa",FontAwesome);
 const Login = ({ name, password, onclick }) => {
-    // console.log("name is:", name);
+    // console.log("name is:", name, ishow);
 
     let getName = null;
     let getPassword = null;
-    let sure = () => {
-        let val = getName.value;
-        console.log("val", val);
-        return val;
-
-    };
-    let sure1 = () => {
-        let val = getPassword.value;
-        console.log("password:", val);
-
-        return val;
-    }
-    // store.dispatch(addPeople(name, password))
     let handleClick = (e) => {
         let sure = getName.value.trim();
         let sure1 = getPassword.value.trim();
         onclick(sure, sure1);
+        sure = '';//清空input
+        sure1 = '';
     }
 
     return (
-
         <div>
-            <p>name: {name}</p>
-            <label htmlFor="name">name</label>
+            {/* <p>name: {name}</p> */}
+            <label htmlFor="name"><FaUser/></label>
             <input type="text" id="name" ref={(input) => {
                 getName = input
-            }} />
-            <p>another name: {name}</p>
-            
-            <label htmlFor="password">password</label>
+            }} placeholder="name"/>
+            {/* <p>another name: {name}</p> */}
+            <p></p>
+            <label htmlFor="password"><FaKey/></label>
             <input type="password" id="password" ref={(input) => {
                 getPassword = input
-            }} />
-            <p> {password} is password</p>
-            <button onClick={(e) => handleClick(e)}></button>
+            }} placeholder="password"/>
+            {/* <p> {password} is password</p> */}
+            <p></p>
+            
+            <span onClick={(e) => handleClick(e)}><FaHandPaperO/></span>
         </div >
     )
 

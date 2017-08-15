@@ -113,7 +113,7 @@ require("./sass/index.scss")
 // require("./js/todo1.jsx");
 // require('./js/newTodo.jsx');
 
-// require('./js/cloudTodo.jsx');
+require('./js/cloudTodo.jsx');
 // require('./js/userDialog.jsx');
 // require('./js/dialog.jsx');
 //redux
@@ -134,7 +134,7 @@ require("./sass/index.scss")
 // import BasicExample from './js/reactRouter.jsx'
 
 //使用全新的文件管理性质
-let a=require('./src/index.js');
-console.log("aaa:",a);
+// let a=require('./src/index.js');
+// console.log("aaa:",a);
 
 

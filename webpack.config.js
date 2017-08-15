@@ -5,9 +5,10 @@ const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const 
 // let app = './app.js'
 // let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
+let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js'] }
 // let app = { app: ['babel-polyfill', './app.js'] }
 // use for src's index.js
-let app = { app: ['babel-polyfill', './src/index.js'] }
+// let app = { app: ['babel-polyfill', './src/index.js'] }
 
 module.exports = {
     entry: app,
@@ -16,12 +17,12 @@ module.exports = {
         filename: '[name].js',
         publicPath: "./dist/"
     },
-    // devtool: 'source-map',
-    // devServer: {
-    //     hot: true,
-    //     contentBase: path.resolve(__dirname, "./"),
-    //     publicPath: './'
-    // },
+    devtool: 'source-map',
+    devServer: {
+        hot: true,
+        contentBase: path.resolve(__dirname, "./"),
+        publicPath: './'
+    },
     resolve:{
         alias:{
             im:path.resolve(__dirname,"./js/index.jsx"),
@@ -48,7 +49,7 @@ module.exports = {
                 use: extractTextWebpackPlugin.extract({
                     fallback: "style-loader",
                     use: [
-                        "css-loader", {
+                        "css-loader",{loader:'postcss-loader'}, {
                             loader: "sass-loader"
                         }
                     ]
@@ -57,12 +58,26 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                }
+                // use: {
+                //     loader: 'css-loader',
+                //     options: {
+                //         sourceMap: true
+                //     }
+                // }
+                use: extractTextWebpackPlugin.extract({
+                    fallback: "style-loader",
+                    use: [{
+                            loader: 'css-loader',
+                        }, {
+                            loader: 'postcss-loader',
+                            // options: {
+                            //     // config: {
+                            //     //     path: './postcss.config.js'
+                            //     // }
+                            // }
+                        }]
+                        // use: ['css-loader', 'postcss-loader']
+                })
             }
 
         ]
