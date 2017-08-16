@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 // import LogIn from './containers/login.js'
 // import SignUp from './containers/signup.js'
-import App from '../containers/app.js';
+import App from '../components/app.js';
 
 // import login from './reducers/login.js'
 import appReducer from '../reducers/index.js'
-
+require('../scss/index.scss')
 // console.log("addreducer", appReducer);
 // console.log(login, "reducer,login");
 
