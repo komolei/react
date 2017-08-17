@@ -25,4 +25,28 @@ export const changeShow = (ishow) => {
     }
 
 }
-// export 
+//todo
+export const addTodo = "addTodo";
+export const AddTodo = (text, index) => {
+    return {
+        type: addTodo,
+        text: { id: index, title: text, status: 'uncompleted', deleted: 'false' },
+        // todoList:[...todoList,{ id: index, title: text, status: 'uncompleted', deleted: 'false' }]
+    }
+}
+export const todo = 'todo';
+// export const todoList = [];
+export const Todo = (todoInput) => {
+    let todolist = [];
+    todolist.push(todoInput);
+    return {
+        type: todo,
+        todoList: todoInput,
+    }
+}
+// export const TodoList=(Todo)=>{
+//     return {
+//         type: 'de',
+//         todoLis
+//     }
+// }

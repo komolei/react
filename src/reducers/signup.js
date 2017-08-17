@@ -11,3 +11,4 @@ const signup = (state = { name: '', password: '', email: '' }, action) => {
             return state;
     }
 }
+export default signup;

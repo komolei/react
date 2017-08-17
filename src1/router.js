@@ -3,11 +3,11 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import Apps from './router/app.js';
+import Apps from './store/app.js';
 import { render } from 'react-dom';
 import React, { Component } from 'react';
 import Todo from './components/todo.js';
-console.log(Apps, "todo");
+// console.log(Apps, "todo"); 
 const Basic = () => (
     <Router>
         <div>
