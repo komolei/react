@@ -2,12 +2,26 @@ import React, { Component } from 'react';
 import { Todo } from '../actions';
 class TodoList extends Component {
     delete = (e, todoList, key) => {
+        // return todoList.splice(key, 1);
+        // console.log("key",key);
+        // console.log("ggx");
+        // this.props.todoList.splice(key, 1);
+        console.log("key is:", key);
+        debugger;
+        // todoList = todoList.splice(key, 1);
+
+        console.log("todoListdfadafad is what:", todoList);
         this.props.onDelete(e, todoList, key);
+        // debugger;
     }
     render() {
+        this.props.todoList.push(this.props.content);
         const { TodoList, content, todoList, sure, changeCompleted, onDelete } = this.props;
-        // todoList === undefined ? console.log("gg") : item;
-        console.log("new content", this.todoList1);
+        // console.log("todoList", content);
+        // console.log("content:", this.props);
+        // debugger; 
+        // sure(content);
+        console.log("todoList is :", todoList);;
         let item = todoList.map((item, index) => {
             return (
                 <li key={index}>
@@ -25,15 +39,13 @@ class TodoList extends Component {
                             {/* this.props.changeCompleted(item.status); */ }
                         }
                     }} />
-                    {console.log(todoList.indexOf(item))}
+                    {/* {console.log(item)} */}
                     <button onClick={(event) => {
-                        {/* let index = todoList.indexOf(item);
-                        console.log("index is:", index); */}
-                        this.delete(event, todoList, index);
-                        console.log("index", index);
+                        this.delete(event, todoList, todoList.indexOf(item));
+                        console.log(todoList.indexOf(item), "index");
                         {/* let index = todoList.indexOf(item);
                         todoList.splice(index, 1); */}
-                    }} key={index} >删除</button>
+                    }} key={item.id}>删除</button>
                 </li>
             )
         })
@@ -42,6 +54,5 @@ class TodoList extends Component {
         )
 
     }
-
 }
 export default TodoList;

@@ -1,13 +1,11 @@
 import { addTodo } from '../actions'
 const todoInput = (state = {
-    text: 'init',
-    todolist: [],
+    text: { id: 0, title: "first", status: 'uncompleted', deleted: 'false' },
 }, action) => {
     switch (action.type) {
         case addTodo:
             return {
                 text: action.text,
-                todolist: action.todolist,
             }
         default:
             return state;

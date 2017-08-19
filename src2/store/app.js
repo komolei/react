@@ -21,10 +21,10 @@ import appReducer from '../reducers/index.js'
 // let store = store.createStore(login);多写了store,香蕉皮。。
 // let store = createStore(login);
 let store = createStore(appReducer);
+console.log(store.getState(), "store.getState()");
 // store.subscribe(()=>{
 
 // })
-console.log("store",store.getState());
 // let Apps = <Provider store={store}>
 //     <App />
 // </Provider>
@@ -43,7 +43,5 @@ let Apps = ({ store = createStore(appReducer) }) => (
 //         </Router>
 //     </Provider>
 // );
-// store.subscribe()
-
 export default Apps;
 // export { Root, dialog }

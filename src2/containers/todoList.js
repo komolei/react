@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import TodoList from '../components/todoList.js'
-import { todo, Todo, AddTodo } from '../actions'
+import { Todo } from '../actions'
 const mapStateToProps = (state, ownProps) => {
-    console.log("fuck state", state, "state.todoInput", state.todoInput.todolist);
     return {
-        text: state.todoInput.text,
-        todoList: state.todoInput.todolist,
-        content: state.TodoList.todoList,
+        content: state.todoInput.text,
+        todoList: state.TodoList.todoList,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -19,12 +17,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(Todo(val))
         },
         onDelete: (e, todoList, key) => {
-            todoList.splice(key, 1);
-            console.log("container todoList", todoList);
-            dispatch(AddTodo('', todoList))
-            // dispatch({ type: todo, todoList: todoList });
+            todoList.splice(key,1);
             dispatch(Todo(todoList))
-            // console.log("new store",state.todoInput,todolist);
         }
     }
 }

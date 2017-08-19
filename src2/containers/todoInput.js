@@ -9,10 +9,12 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addTodo: (val, index, todolist) => {
-            let text = { id: index, title: val, status: 'uncompleted', delete: 'false' }
-            todolist.push(text);
-            dispatch(AddTodo(text, todolist));
+        addTodo: (val, index) => {
+            // console.log("val:", val, "index:", index);
+            dispatch(AddTodo(val, index))
+            // dispatch(Todo(val));
+            // console.log("state2", state.todoInput.text);
+
         }
     }
 }

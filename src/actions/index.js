@@ -27,18 +27,23 @@ export const changeShow = (ishow) => {
 }
 //todo
 export const addTodo = "addTodo";
-export const AddTodo = (text, index) => {
+export let todolist = [];
+export const AddTodo = (text, todolist) => {
+    // let todoInput = { id: index, title: text, status: 'uncompleted', deleted: 'false' }
+    console.log("action todoInput", text);
+    // todolist = todolist.push(todoInput);
+    console.log("new todolist: what are :", todolist);
     return {
         type: addTodo,
-        text: { id: index, title: text, status: 'uncompleted', deleted: 'false' },
-        // todoList:[...todoList,{ id: index, title: text, status: 'uncompleted', deleted: 'false' }]
+        text: text,
+        todolist: todolist,
     }
 }
+
+
 export const todo = 'todo';
 // export const todoList = [];
 export const Todo = (todoInput) => {
-    let todolist = [];
-    todolist.push(todoInput);
     return {
         type: todo,
         todoList: todoInput,
@@ -50,3 +55,39 @@ export const Todo = (todoInput) => {
 //         todoLis
 //     }
 // }
+
+//export
+
+//state 
+//   {
+//      todoList:[];
+// }
+let todoIndex = 0;
+export const addIndex = 'addIndex';
+export const AddIndex = () => {
+    return {
+        type: addIndex,
+        id: todoIndex++,
+    }
+}
+export const todoList = (todoInput) => {
+    return {
+        type: addTodo,
+        id: todoIndex++,
+        todoList: todoInput,
+    }
+}
+export const todoDelete = 'todoDelete';
+export const TodoDelete = (todoList) => {
+    return {
+        type: todoDelete,
+        todoList: todoList,
+    }
+}
+export const changeStatus = 'changeStatus';
+export const ChangeStatus = (index) => {
+    return {
+        type: changeStatus,
+        index: index,
+    }
+}

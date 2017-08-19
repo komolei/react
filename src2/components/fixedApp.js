@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import LogIn from './login.js'
-import SignUp from './signup.js'
+import LogIn from '../containers/login.js'
+import SignUp from '../containers/signup.js'
 import Todo from '../components/todo.js';
-import TodoInput from './todoInput.js'
-import TodoList1 from './todoList.js'
-import NewTodo from './newTodo.js';
 // import { ishow } from '../actions'
 // import { connect } from 'react-redux';
 // console.log("ishow:", ishow);
@@ -31,7 +28,7 @@ class App extends Component {
     render() {
         let ishow = this.state.ishow;
         const { click } = this.props;
-
+  
         return (
 
             <div >
@@ -44,9 +41,7 @@ class App extends Component {
                     ishow ? <SignUp /> : <LogIn />
 
                 }
-                {/* <TodoInput />
-                <TodoList1 /> */}
-                <NewTodo />
+                
                 {/* {console.log("ishow33x:", ishow)} */}
 
                 {/* <SignUp show={ishow} /> */}
