@@ -1,5 +1,7 @@
 import { addTodo, todoDelete, changeStatus } from '../actions';
 
+//导入learcloud的todo
+// let todo = JSON.parse(localStorage.getItem('todo'))
 const todoReducer = (state = { todoList: [] }, action) => {
     switch (action.type) {
         case addTodo:

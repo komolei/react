@@ -30,6 +30,7 @@ class newTodo extends Component {
         const { todoList } = this.props;
         // const todoList = this.props.todoList;
         console.log("new todoList:",todoList);
+        localStorage.setItem('todo',JSON.stringify(todoList));    
         return (
             <div>
                 <label htmlFor="todoInput"><FaFileTextO/> </label>

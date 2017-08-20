@@ -3,6 +3,8 @@ import { surePeople } from '../actions'
 import Login from '../components/login.js'
 import { AV, userLogin } from '../leancloud/init.js'
 
+
+
 // console.log("av:", Av);
 
 // console.log("container", surePeople().name);
@@ -28,7 +30,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             // }, (error) => {
             //     alert(error + "!");
             // })
-            userLogin(name,password);
+            userLogin(name, password);
+
+            // localStorage.setItem('todo',JSON.stringify(todo));
             // dispatch(surePeople(name, password))//这一步并不需要，只是为了试试看redux而用的
         }
     }

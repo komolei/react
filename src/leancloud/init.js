@@ -5,40 +5,61 @@ AV.init({ appId, appKey });
 export default AV;
 
 export const userLogin = (name, password) => {
+    console.log("dddd");
     AV.User.logIn(name, password).then((loginedUser) => {
-        console.log(loginedUser, "success");
+        console.log(loginedUser, "success","userTodoId",loginedUser.get('userTodoId'));
         alert("login success");
-        let objectId=loginedUser.id;
-        console.log("new objectid is:",objectId);
-       let todoId= addTodoList()
+        let userTodoId=loginedUser.get('userTodoId');
+        findtodo(userTodoId);
     }, (error) => {
         alert(error + "!");
-    })
+    }).then((loginedUser) => console.log(loginedUser.get('userTodoId')))
 }
-export const userSignup = (name, password, email) => {
+export const userSignup = (name, password, email, userTodoId) => {
     let user = new AV.User();
     user.setUsername(name);
     user.setPassword(password);
     user.setEmail(email);
-    user.signUp().then(() => {
-        console.log("signup success");
-        return true;
+    user.signUp().then((loginedUser) => {
+        console.log("signup success", loginedUser,"userTodoId:",userTodoId);
+        loginedUser.set('userTodoId', userTodoId);
+        loginedUser.save();
     }, (error) => alert(error))
 }
 
-//TodoList
+//TodoLists
 
-
-export const addTodoList = (todoList) => {
+export const addTodoList = (name, password,email) => {
     let Todo = AV.Object.extend('Todo');
-    let todo=new Todo();
-    todo.set("todo",todoList);
-    todo.save().then((todo)=>{
-        let objectId=todo.id;
-        console.log("success",objectId);
-        return objectId;
-    }),(error)=>{
-        console.log("error",error);
+    let todo = new Todo();
+    todo.set("title", "todo");
+    let todoList = JSON.stringify(localStorage.getItem('todo'));
+    todo.set("content", todoList);
+    todo.save().then((todo) => {
+        let userTodoId = todo.id;
+        console.log("userTodoId is:", userTodoId);
+        // let userTodoId = "addTodoList2222"
+        // loginedUser.set('userTodoId', userTodoId);
+        userSignup(name, password, email, userTodoId);
+    }), (error) => {
+        console.log("error", error);
     }
 
 }
+
+export const findTodo = (userTodoId) => {
+    let query = new AV.Query('Todo');
+    query.get(userTodoId).then(function (todo) {
+        // localStorage.setItem('todo', todo)
+        let todoList=todo.get('content');
+        localStorage.setItem('todo',todoList)
+    }, function (error) {
+        console.log("find error", error);
+    });
+
+} 
+//closed window 
+export const closedWindow = () => {
+
+    }
+    

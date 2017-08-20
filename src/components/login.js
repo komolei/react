@@ -17,8 +17,8 @@ const Login = ({ name, password, onclick }) => {
         onclick(sure, sure1);
         // sure = '';//清空input
         // sure1 = '';
-        // getName.value = "";//user name 不清空
-        getPassword = "";
+        getName.value = "";//user name 不清空
+        getPassword.value = "";
     }
 
     return (
