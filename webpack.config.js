@@ -88,11 +88,13 @@ module.exports = {
         //     // Options...
         // }),
         new extractTextWebpackPlugin("[name].css"),
-        // new UgLifyJsPlugin({
-        //     compress: true,
-        //     mangle: true,
-        //     beautify: true,
-        //     // comments: true,
-        // })
+        new UgLifyJsPlugin({
+            test: /\.js($&#124;\?)/i,
+            include: /\/dist/,
+            compress: true,
+            mangle: true,
+            beautify: true,
+            // comments: true,
+        })
     ]
 }
