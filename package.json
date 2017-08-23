@@ -1,12 +1,13 @@
 {
-  "name": "reactLearnccc1",
+  "name": "reactLearnkomolei",
   "version": "1.0.0",
   "description": "React",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
-    "up": "webpack-dev-server --open"
+    "up": "webpack-dev-server --open",
+    "compress": "webpack --p"
   },
   "repository": {
     "type": "git",
