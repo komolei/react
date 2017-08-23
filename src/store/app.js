@@ -24,11 +24,14 @@ let store = createStore(appReducer);
 // store.subscribe(()=>{
 
 // })
-console.log("store",store.getState());
+console.log("store", store.getState());
 // let Apps = <Provider store={store}>
 //     <App />
 // </Provider>
-
+// let handle = () => {
+    
+// }
+// store.subscribe(handler)
 let Apps = ({ store = createStore(appReducer) }) => (
     <Provider store={store}>
         <App />

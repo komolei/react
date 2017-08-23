@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { surePeople } from '../actions'
+import { surePeople,TodoDelete } from '../actions'
 import Login from '../components/login.js'
 import { AV, userLogin } from '../leancloud/init.js'
 
@@ -28,10 +28,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             //     alert("login success");
 
             // }, (error) => {
-            //     alert(error + "!");
+            //     
+            // alert(error + "!");
             // })
-            userLogin(name, password);
 
+            userLogin(name, password);
+            // let todo=localStorage.getItem('todo');
+            // console.log("this.props.todoList:",this.props.todoList);
             // localStorage.setItem('todo',JSON.stringify(todo));
             // dispatch(surePeople(name, password))//这一步并不需要，只是为了试试看redux而用的
         }

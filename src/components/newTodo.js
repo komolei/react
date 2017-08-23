@@ -23,21 +23,22 @@ class newTodo extends Component {
         // console.log("new store:", this.props.todoList,"newTodoList:",newTodoList)
         console.log("new store", this.props.todoList);
     }
-    change=(e,index)=>{
+    change = (e, index) => {
         this.props.onStatus(index);
     }
     render() {
         const { todoList } = this.props;
         // const todoList = this.props.todoList;
-        console.log("new todoList:",todoList);
+        console.log("new todoList:", todoList);
         localStorage.setItem('todo',JSON.stringify(todoList));    
         return (
             <div>
-                <label htmlFor="todoInput"><FaFileTextO/> </label>
+                <label htmlFor="todoInput"><FaFileTextO /> </label>
                 <input type="text" placeholder="please input Todo" onKeyPress={(e) => { this.sureTodo(e) }} ref={input => this.node = input} />
                 <ul>
-                    {todoList.map((item, index) => {
-                        return <li key={index}><FaFileO/><span>{item.title} </span><span>{item.status} <input type="checkbox" checked={item.status === "completed"} onChange={(e)=>{this.change(e,index)}} /> </span>
+
+                    {todoList[0] === null ? (todoList.shift(), console.log("11")) : todoList.map((item, index) => {
+                        return <li key={index}><FaFileO /><span>{item.title} </span><span>{item.status} <input type="checkbox" checked={item.status === "completed"} onChange={(e) => { this.change(e, index) }} /> </span>
                             <button onClick={(e) => { this.deleted(e, index, todoList) }}>del</button></li>
                     })}
                 </ul>
