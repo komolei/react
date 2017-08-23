@@ -30,22 +30,19 @@
 
 ## Installing 
 
-`npm install`
-`npm run up` running in the server
-`npm start` ===> `webpack --watch`
-`npm run compress` ===>  `webpack --p`
+`npm install` <br/>
+`npm run up` running in the server <br/>
+`npm start` ===> `webpack --watch` <br/>
+`npm run compress` ===>  `webpack --p` <br/>
 
 ## License 
 
 [MIT](http://opensource.org/licenses/MIT)
-Copyright (c) 2017-present, komolei
+Copyright (c) 2017-present, komolei 🐵
 
 
-
-
-
-
-### `webpack -p` 会压缩demo ，为什么？
+<br/>
+### `webpack -p` 会压缩demo ，为什么？<br/>
 #### `shortcut for --optimize-minimize --define process.env.NODE_ENV="production"`
 #### translate 快捷键为了 --优化-最小尺寸 --定义  工艺过程的环境变量 node的环境变量是产品
 #### 自己的理解：快捷压缩demo，形成产品。
