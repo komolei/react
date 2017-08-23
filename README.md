@@ -7,7 +7,7 @@
 ### introduce 
 - use React to finish a simple Todo application
 
-[preview](https://komolei.github.io/);
+[preview](https://komolei.github.io/react/)👈
 
 ## Function
 
