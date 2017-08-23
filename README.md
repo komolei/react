@@ -1,7 +1,7 @@
 # React 
 
 <p align="center">
-     <a href="https://www.komolei.cn"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
+     <a href="http://www.komolei.cn"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
 </p>
 
 ### introduce 
