@@ -23,10 +23,10 @@ module.exports = {
         contentBase: path.resolve(__dirname, "./"),
         publicPath: './'
     },
-    resolve:{
-        alias:{
-            im:path.resolve(__dirname,"./js/index.jsx"),
-            tryagain:path.resolve(__dirname,"./js/tryagain.jsx"),
+    resolve: {
+        alias: {
+            im: path.resolve(__dirname, "./js/index.jsx"),
+            tryagain: path.resolve(__dirname, "./js/tryagain.jsx"),
         }
     },
     module: {
@@ -49,7 +49,7 @@ module.exports = {
                 use: extractTextWebpackPlugin.extract({
                     fallback: "style-loader",
                     use: [
-                        "css-loader",{loader:'postcss-loader'}, {
+                        "css-loader", { loader: 'postcss-loader' }, {
                             loader: "sass-loader"
                         }
                     ]
@@ -67,17 +67,29 @@ module.exports = {
                 use: extractTextWebpackPlugin.extract({
                     fallback: "style-loader",
                     use: [{
-                            loader: 'css-loader',
-                        }, {
-                            loader: 'postcss-loader',
-                            // options: {
-                            //     // config: {
-                            //     //     path: './postcss.config.js'
-                            //     // }
-                            // }
-                        }]
-                        // use: ['css-loader', 'postcss-loader']
+                        loader: 'css-loader',
+                    }, {
+                        loader: 'postcss-loader',
+                        // options: {
+                        //     // config: {
+                        //     //     path: './postcss.config.js'
+                        //     // }
+                        // }
+                    }]
+                    // use: ['css-loader', 'postcss-loader']
                 })
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                            outputPath: 'images/',
+                            publicPath:'./'
+                        }
+                    }]
             }
 
         ]
