@@ -2,10 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const importBabel = require("babel-plugin-import");
 // const 
 // let app = './app.js'
 // let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
-let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './newSrc/index.js'] }
+// let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './newSrc/index.js'] }
+let app = { app: ['./Ant/index.js'] }
 // let app = { app: ['babel-polyfill', './app.js'] }
 // use for src's index.js
 // let app = { app: ['babel-polyfill', './src/index.js'] }
@@ -17,12 +19,12 @@ module.exports = {
         filename: '[name].js',
         publicPath: "./dist/"
     },
-    devtool: 'source-map',
-    devServer: {
-        hot: true,
-        contentBase: path.resolve(__dirname, "./"),
-        publicPath: './'
-    },
+    // devtool: 'source-map',
+    // devServer: {
+    //     hot: true,
+    //     contentBase: path.resolve(__dirname, "./"),
+    //     publicPath: './'
+    // },
     resolve: {
         alias: {
             im: path.resolve(__dirname, "./js/index.jsx"),
@@ -57,7 +59,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
                 // use: {
                 //     loader: 'css-loader',
                 //     options: {
@@ -87,9 +89,19 @@ module.exports = {
                         options: {
                             name: '[path][name].[ext]',
                             outputPath: 'images/',
-                            publicPath:'./'
+                            publicPath: './'
                         }
                     }]
+            },
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        // attrs: [':data-src'],
+                        minimize: true,
+                    }
+                }
             }
 
         ]
@@ -107,6 +119,11 @@ module.exports = {
             mangle: true,
             beautify: true,
             // comments: true,
-        })
+        }),
+        // new importBabel(
+        //     {
+        //         libraryName: "antd",
+        //         style: "css",
+        //     })
     ]
 }
