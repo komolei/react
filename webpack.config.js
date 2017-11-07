@@ -5,10 +5,11 @@ const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const 
 // let app = './app.js'
 // let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
-let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './newSrc/index.js'] }
+// let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './newSrc/index.js'] }
 // let app = { app: ['babel-polyfill', './app.js'] }
 // use for src's index.js
 // let app = { app: ['babel-polyfill', './src/index.js'] }
+let app = { app: ['babel-polyfill', 'react-hot-loader/patch','./newSrc/index.js'] }
 
 module.exports = {
     entry: app,
@@ -44,17 +45,17 @@ module.exports = {
                     // }
                 }
             },
-            {
-                test: /\.scss$/,
-                use: extractTextWebpackPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        "css-loader",{loader:'postcss-loader'}, {
-                            loader: "sass-loader"
-                        }
-                    ]
-                })
-            },
+            // {
+            //     test: /\.scss$/,
+            //     use: extractTextWebpackPlugin.extract({
+            //         fallback: "style-loader",
+            //         use: [
+            //             "css-loader",{loader:'postcss-loader'}, {
+            //                 loader: "sass-loader"
+            //             }
+            //         ]
+            //     })
+            // },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,

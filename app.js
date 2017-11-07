@@ -105,8 +105,15 @@ require("babel-polyfill");//for using es6 promise
 // require("./js/component.jsx")
 // require("./js/ssk.jsx");
 // require("./js/props.jsx");
-require("./sass/index.scss")
+
+// need
+// require("./sass/index.scss")
+//need
+
+
 // // require("./js/jiaocheng.jsx")    
+
+
 // require("./js/todo.jsx");
 // require("./js/time.jsx");
 // require('./js/index.jsx');
