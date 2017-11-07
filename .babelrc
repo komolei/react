@@ -8,8 +8,15 @@
         ],
         "stage-0",
         "react"
-    ],
-    "plugins": [
-        "react-hot-loader/babel"
     ]
+    // ,
+    // "plugins": [
+    //     [
+    //         "import",
+    //         {
+    //             "libraryName": "antd",
+    //             "style": "css"
+    //         }
+    //     ]
+    // ]
 }

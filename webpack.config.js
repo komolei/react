@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UgLifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const importBabel = require("babel-plugin-import");
 // const 
 // let app = './app.js'
 // let app = { app: ['babel-polyfill', 'react-hot-loader/patch', './app.js'] }
@@ -58,7 +59,7 @@ module.exports = {
             // },
             {
                 test: /\.css$/,
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
                 // use: {
                 //     loader: 'css-loader',
                 //     options: {
@@ -79,6 +80,28 @@ module.exports = {
                         }]
                         // use: ['css-loader', 'postcss-loader']
                 })
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                            outputPath: 'images/',
+                            publicPath: './'
+                        }
+                    }]
+            },
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        // attrs: [':data-src'],
+                        minimize: true,
+                    }
+                }
             }
 
         ]
@@ -96,6 +119,11 @@ module.exports = {
             mangle: true,
             beautify: true,
             // comments: true,
-        })
+        }),
+        // new importBabel(
+        //     {
+        //         libraryName: "antd",
+        //         style: "css",
+        //     })
     ]
 }
